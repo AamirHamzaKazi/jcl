@@ -91,3 +91,118 @@
   .blur-text-piece { opacity: 1 !important; transform: none !important; }
   .ui-button { transition: none; }
 }
+
+/* Hero Live Fizz Canvas & Ambient Engine */
+.hero-live-container {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  overflow: hidden;
+}
+.hero-fizz-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: auto;
+}
+.live-fizz-badge {
+  position: absolute;
+  top: 110px;
+  right: 5%;
+  z-index: 10;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  background: rgba(18, 14, 20, 0.65);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(212, 235, 86, 0.35);
+  border-radius: 999px;
+  color: #e3ed9e;
+  font-size: 7.5px;
+  letter-spacing: 1.2px;
+  font-weight: 700;
+  pointer-events: none;
+  animation: badge-pulse 4s ease-in-out infinite alternate;
+}
+.live-fizz-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #d4eb56;
+  box-shadow: 0 0 10px #d4eb56;
+  animation: dot-fizz 1.4s infinite;
+}
+@keyframes dot-fizz {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.4); opacity: 0.6; }
+}
+@keyframes badge-pulse {
+  from { border-color: rgba(212, 235, 86, 0.25); }
+  to { border-color: rgba(185, 146, 245, 0.6); }
+}
+
+/* Interactive Image Dispersion & Liquid Shimmer */
+.image-dispersion-wrap {
+  position: relative;
+  perspective: 1200px;
+  border-radius: 6px;
+  overflow: hidden;
+  cursor: pointer;
+  background: #19121d;
+  isolation: isolate;
+}
+.dispersion-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+.dispersion-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: filter 0.5s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.image-dispersion-wrap:hover .dispersion-image {
+  filter: brightness(1.08) contrast(1.06) saturate(1.15);
+}
+.dispersion-sheen {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background: linear-gradient(
+    115deg,
+    transparent 0%,
+    transparent 40%,
+    rgba(255, 255, 255, 0.18) 50%,
+    transparent 60%,
+    transparent 100%
+  );
+  background-size: 250% 250%;
+  background-position: 200% 0;
+  transition: background-position 0.8s ease;
+}
+.image-dispersion-wrap:hover .dispersion-sheen {
+  background-position: -50% 0;
+}
+.dispersion-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 3;
+}
+@media (max-width: 768px) {
+  .live-fizz-badge {
+    top: 92px;
+    font-size: 6.5px;
+    padding: 5px 11px;
+  }
+}

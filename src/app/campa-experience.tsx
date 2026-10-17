@@ -11,6 +11,8 @@ import StoreDialog from "@/components/store-dialog";
 import BrandJourney from "@/components/brand-journey";
 import ProductRange from "@/components/product-range";
 import RetailerLinks from "@/components/retailer-links";
+import HeroLiveBackground from "@/components/hero-live-background";
+import ImageDispersion from "@/components/image-dispersion";
 import { SmoothScroll, useMotionProfile } from "@/components/motion-system";
 
 const editorialEase = [.22, 1, .36, 1] as const;
@@ -21,10 +23,10 @@ const flavours = [
   { name: "Lemon", title: "THE FRESH TAKE.", line: "A crisp little twist on the everyday.", image: "/images/flavour-lemon-duo.webp", color: "#d4eb56", number: "03", position: "lemon-world" },
 ];
 const stories = [
-  { image: "/images/campaign-rooftop.webp", title: "GOLDEN HOUR. OUR KIND OF HOUR.", tag: "01 — YOUR PEOPLE", className: "culture-wide", alt: "Indian friends sharing Campa on a Mumbai rooftop at golden hour" },
-  { image: "/images/campaign-skate.webp", title: "MAKE YOUR OWN MOVES.", tag: "02 — YOUR PLAYGROUND", className: "culture-tall", alt: "Indian skateboarder with a Campa Cola can at a sunlit skate spot" },
+  { image: "/images/campaign-rooftop-dynamic.jpg", title: "GOLDEN HOUR. OUR KIND OF HOUR.", tag: "01 — YOUR PEOPLE", className: "culture-wide", alt: "Indian friends sharing Campa on a Mumbai rooftop at golden hour" },
+  { image: "/images/campaign-neon-energy.jpg", title: "ELECTRIC ENERGY. UNLEASH THE BEAST.", tag: "02 — NEON POWER", className: "culture-tall", alt: "Campa Neon Boost energy drink exploding through citrus vortex" },
   { image: "/images/campaign-citrus.webp", title: "A LITTLE EXTRA ZEST.", tag: "03 — YOUR FLAVOUR", className: "culture-small", alt: "Campa Orange and Lemon in a burst of citrus, ice and sparkling water" },
-  { image: "/images/campaign-hero.webp", title: "THAT FIRST-SIP FEELING.", tag: "04 — YOUR MOMENT", className: "culture-detail", alt: "Condensation on a purple Campa Cola can surrounded by ice and cola" },
+  { image: "/images/campaign-hero-dynamic.jpg", title: "THAT FIRST-SIP FEELING.", tag: "04 — YOUR MOMENT", className: "culture-detail", alt: "Condensation on an ice-cold purple Campa Cola can bursting through fizzy waves" },
 ];
 
 function Logo({ className = "" }: { className?: string }) {
@@ -139,7 +141,13 @@ export default function CampaExperience() {
     <CampaignHeader menuOpen={menuOpen} onMenuChange={setMenuOpen} onShop={openStore} />
     <main id="main">
       <section className="campaign-hero" ref={heroRef} aria-labelledby="hero-title">
-        <motion.div className="hero-photograph" style={{ y: reduce ? 0 : heroY, scale: reduce ? 1 : heroScale }}><picture><source media="(max-width: 560px)" srcSet="/images/flavour-cola-duo.webp" /><img src="/images/campaign-cola-duo.webp" width={1672} height={941} alt="An ice-cold Campa Cola can and bottle together in a splash of cola and ice" fetchPriority="high" /></picture></motion.div>
+        <HeroLiveBackground />
+        <motion.div className="hero-photograph" style={{ y: reduce ? 0 : heroY, scale: reduce ? 1 : heroScale }}>
+          <picture>
+            <source media="(max-width: 560px)" srcSet="/images/campaign-hero-dynamic.jpg" />
+            <img src="/images/campaign-hero-dynamic.jpg" width={1672} height={941} alt="An ice-cold purple Campa Cola can bursting through a dynamic splash of cola and ice" fetchPriority="high" />
+          </picture>
+        </motion.div>
         <div className="hero-shade" /><div className="film-grain" />
         <motion.div className="hero-copy" style={{ y: reduce ? 0 : copyY, opacity: reduce ? 1 : copyOpacity }}>
           <motion.div className="hero-kicker micro" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: .3, duration: .8 }}><span className="status-dot" /> AN INDIAN ORIGINAL. AN ALL-NEW ENERGY.</motion.div>
@@ -153,7 +161,7 @@ export default function CampaExperience() {
 
       <BrandJourney relianceSourceUrl="https://www.ril.com/ar2022-23/financial-performance-and-review.html" />
 
-      <section className="campaign-film" aria-label="The Campa life: same roots, no rules"><motion.img src="/images/campaign-rooftop.webp" alt="Friends on a Mumbai rooftop sharing Campa at sunset" width={1536} height={1024} loading="lazy" decoding="async" initial={reduce ? false : { scale: compact ? 1.025 : 1.06 }} whileInView={{ scale: 1 }} viewport={{ once: true }} transition={{ duration: compact ? .85 : 1.3, ease: editorialEase }} /><div className="film-shade" /><div className="film-topline micro"><span>THE CAMPA LIFE / VOL. 01</span><span>MUMBAI, INDIA ↗</span></div><Reveal className="film-title"><h2>SAME ROOTS.<br /><span>NO RULES.</span></h2></Reveal><button className="film-button" onClick={() => setGallery(0)} aria-label="Open the rooftop campaign photograph"><Plus size={23} /><span>STEP INTO OUR WORLD</span></button></section>
+      <section className="campaign-film" aria-label="The Campa life: same roots, no rules"><motion.img src="/images/campaign-rooftop-dynamic.jpg" alt="Friends on a Mumbai rooftop sharing Campa at sunset" width={1536} height={1024} loading="lazy" decoding="async" initial={reduce ? false : { scale: compact ? 1.025 : 1.06 }} whileInView={{ scale: 1 }} viewport={{ once: true }} transition={{ duration: compact ? .85 : 1.3, ease: editorialEase }} /><div className="film-shade" /><div className="film-topline micro"><span>THE CAMPA LIFE / VOL. 01</span><span>MUMBAI, INDIA ↗</span></div><Reveal className="film-title"><h2>SAME ROOTS.<br /><span>NO RULES.</span></h2></Reveal><button className="film-button" onClick={() => setGallery(0)} aria-label="Open the rooftop campaign photograph"><Plus size={23} /><span>STEP INTO OUR WORLD</span></button></section>
 
       <section className="flavour-universe" id="flavours" aria-labelledby="flavour-title"><div className="section-meta"><span className="micro">02 / THE FLAVOUR UNIVERSE</span><span className="micro">THREE ORIGINALS. ENDLESS POSSIBILITIES.</span></div><div className="flavour-intro"><Reveal><h2 id="flavour-title">PICK A MOOD.<br /><span className="serif-line">Make it yours.</span></h2></Reveal><Reveal delay={.1}><p>Bold, bright or a little unexpected.<br />There’s a Campa with your name on it.</p><ArrowDown size={30} strokeWidth={1} /></Reveal></div>
         <FlavourWorlds onShop={openStore} />
@@ -164,7 +172,7 @@ export default function CampaExperience() {
       <div className="energy-marquee" aria-hidden="true"><Marquee pauseOnHover><span>MADE OF INDIA.</span><Spark /><span className="marquee-outline">MADE FOR NOW.</span><Spark /></Marquee></div>
 
       <section className="culture-section" id="campa-culture" ref={cultureRef} aria-labelledby="culture-title"><div className="section-meta"><span className="micro">03 / CULTURE, UNCAPPED</span><span className="micro">OUT OF THE ORDINARY. INTO YOUR EVERYDAY.</span></div><div className="culture-heading"><Reveal><span className="micro culture-eyebrow">THE STREETS. THE SUNSETS. THE SPONTANEOUS.</span><h2 id="culture-title">THIS IS<br /><span className="serif-line">our kind of</span><span>GOOD TIME.</span></h2></Reveal><motion.div className="culture-note" style={{ y: reduce ? 0 : cultureY }}><Spark /><p>For the ones who make<br />their own plans.<br />And their own rules.</p><span className="micro">#THECAMPAKIND</span></motion.div></div>
-        <div className="culture-grid">{stories.map((story, index) => <Reveal key={story.tag} className={`culture-tile ${story.className}`} delay={index % 2 * .1}><button className="culture-photo" onClick={() => setGallery(index)} aria-label={`View ${story.title}`}><img src={story.image} alt={story.alt} loading="lazy" width={1200} height={900} /><span className="photo-plus"><Plus size={24} /></span><span className="photo-label micro">{story.tag}</span></button><div className="culture-caption"><h3>{story.title}</h3><ArrowUpRight size={19} /></div></Reveal>)}</div>
+        <div className="culture-grid">{stories.map((story, index) => <Reveal key={story.tag} className={`culture-tile ${story.className}`} delay={index % 2 * .1}><button className="culture-photo" onClick={() => setGallery(index)} aria-label={`View ${story.title}`}><ImageDispersion src={story.image} alt={story.alt} intensity={index === 1 ? "extreme" : "vibrant"}><span className="photo-plus"><Plus size={24} /></span><span className="photo-label micro">{story.tag}</span></ImageDispersion></button><div className="culture-caption"><h3>{story.title}</h3><ArrowUpRight size={19} /></div></Reveal>)}</div>
       </section>
 
       <section className="together-section" ref={togetherRef} aria-labelledby="together-title"><Spotlight className="together-spotlight" fill="#b56ace" /><div className="section-meta micro"><span>BEST SERVED CHILLED.</span><span>BETTER SERVED TOGETHER.</span></div><h2 id="together-title"><span>GOOD.</span><span className="serif-line">Together.</span></h2><motion.img className="together-hands" src="/images/campa-hero-bottles.png" alt="Friends raising Campa bottles together with splashes of cola" width={1440} height={760} loading="lazy" style={{ y: reduce ? 0 : togetherY }} /><span className="together-caption micro">HERE’S TO THE MOMENTS THAT BECOME MEMORIES.</span></section>
