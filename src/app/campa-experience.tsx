@@ -9,6 +9,8 @@ import { Spotlight } from "@/components/aceternity/spotlight";
 import BlurText from "@/components/reactbits/blur-text";
 import StoreDialog from "@/components/store-dialog";
 import BrandJourney from "@/components/brand-journey";
+import ProductRange from "@/components/product-range";
+import RetailerLinks from "@/components/retailer-links";
 import { SmoothScroll, useMotionProfile } from "@/components/motion-system";
 
 const editorialEase = [.22, 1, .36, 1] as const;
@@ -83,7 +85,13 @@ function CampaignHeader({ menuOpen, onMenuChange, onShop }: { menuOpen: boolean;
   });
   return <header className={`campaign-header ${scrolled ? "is-scrolled" : ""}`}>
     <a href="#" aria-label="Campa home"><Logo /></a>
-    <nav className={menuOpen ? "campaign-nav is-open" : "campaign-nav"} data-native-scroll aria-label="Main navigation"><a href="#flavours" onClick={() => onMenuChange(false)}>Flavours <span>01</span></a><a href="#our-story" onClick={() => onMenuChange(false)}>Our story <span>02</span></a><a href="#campa-culture" onClick={() => onMenuChange(false)}>Campa culture <span>03</span></a></nav>
+    <nav className={menuOpen ? "campaign-nav is-open" : "campaign-nav"} data-native-scroll aria-label="Main navigation">
+      <a href="#flavours" onClick={() => onMenuChange(false)}>Flavours <span>01</span></a>
+      <a href="#house-of-campa" onClick={() => onMenuChange(false)}>All Drinks <span>02</span></a>
+      <a href="#our-story" onClick={() => onMenuChange(false)}>Our story <span>03</span></a>
+      <a href="#campa-culture" onClick={() => onMenuChange(false)}>Campa culture <span>04</span></a>
+      <a href="#order-online" onClick={() => onMenuChange(false)}>Order online <span>05</span></a>
+    </nav>
     <div className="header-right"><Magnetic><button className="header-shop" onClick={onShop}>GET YOUR CAMPA <ArrowUpRight size={17} /></button></Magnetic><button className="menu-toggle" aria-label={menuOpen ? "Close navigation" : "Open navigation"} aria-expanded={menuOpen} onClick={() => onMenuChange(!menuOpen)}>{menuOpen ? <X /> : <Menu />}</button></div>
   </header>;
 }
@@ -151,6 +159,8 @@ export default function CampaExperience() {
         <FlavourWorlds onShop={openStore} />
       </section>
 
+      <ProductRange onShop={openStore} />
+
       <div className="energy-marquee" aria-hidden="true"><Marquee pauseOnHover><span>MADE OF INDIA.</span><Spark /><span className="marquee-outline">MADE FOR NOW.</span><Spark /></Marquee></div>
 
       <section className="culture-section" id="campa-culture" ref={cultureRef} aria-labelledby="culture-title"><div className="section-meta"><span className="micro">03 / CULTURE, UNCAPPED</span><span className="micro">OUT OF THE ORDINARY. INTO YOUR EVERYDAY.</span></div><div className="culture-heading"><Reveal><span className="micro culture-eyebrow">THE STREETS. THE SUNSETS. THE SPONTANEOUS.</span><h2 id="culture-title">THIS IS<br /><span className="serif-line">our kind of</span><span>GOOD TIME.</span></h2></Reveal><motion.div className="culture-note" style={{ y: reduce ? 0 : cultureY }}><Spark /><p>For the ones who make<br />their own plans.<br />And their own rules.</p><span className="micro">#THECAMPAKIND</span></motion.div></div>
@@ -159,7 +169,22 @@ export default function CampaExperience() {
 
       <section className="together-section" ref={togetherRef} aria-labelledby="together-title"><Spotlight className="together-spotlight" fill="#b56ace" /><div className="section-meta micro"><span>BEST SERVED CHILLED.</span><span>BETTER SERVED TOGETHER.</span></div><h2 id="together-title"><span>GOOD.</span><span className="serif-line">Together.</span></h2><motion.img className="together-hands" src="/images/campa-hero-bottles.png" alt="Friends raising Campa bottles together with splashes of cola" width={1440} height={760} loading="lazy" style={{ y: reduce ? 0 : togetherY }} /><span className="together-caption micro">HERE’S TO THE MOMENTS THAT BECOME MEMORIES.</span></section>
 
-      <section className="find-section"><Reveal><span className="micro">YOUR NEXT GOOD TIME STARTS HERE.</span><h2>LESS THINKING.<br /><span className="serif-line"><BlurText text="More sipping." delay={70} /></span></h2></Reveal><Magnetic><Button className="find-button" onClick={() => setStoreOpen(true)}><span>FIND YOUR<br />CAMPA</span><MoveUpRight size={36} strokeWidth={1} /></Button></Magnetic></section>
+      <section className="find-section" id="order-online">
+        <Reveal><span className="micro">YOUR NEXT GOOD TIME STARTS HERE.</span><h2>LESS THINKING.<br /><span className="serif-line"><BlurText text="More sipping." delay={70} /></span></h2></Reveal>
+        <Magnetic><Button className="find-button" onClick={() => setStoreOpen(true)}><span>FIND YOUR<br />CAMPA</span><MoveUpRight size={36} strokeWidth={1} /></Button></Magnetic>
+        <div className="retail-shopping">
+          <div className="retail-shopping-intro">
+            <div>
+              <span className="micro">ORDER ONLINE · QUICK COMMERCE & DELIVERY</span>
+              <p>Get Campa delivered in minutes on your favourite app, or explore the complete range across India on JioMart.</p>
+            </div>
+            <a className="full-range-link" href="https://www.jiomart.com/products?q=campa" target="_blank" rel="noopener noreferrer">
+              Open JioMart Store <ArrowUpRight size={14} />
+            </a>
+          </div>
+          <RetailerLinks variant="inline" />
+        </div>
+      </section>
     </main>
     <footer className="campaign-footer"><div className="footer-topline"><a href="#" aria-label="Campa home"><Logo /></a><span className="micro">AN INDIAN ORIGINAL.<br />A FEELING LIKE NO OTHER.</span><a className="line-link" href="#main">BACK TO THE TOP <ArrowUpRight size={18} /></a></div><div className="footer-word" aria-hidden="true">CAMPA<span>®</span></div><div className="footer-credits micro"><span>© 2026 CAMPA / CONCEPT EXPERIENCE</span><span className="jcl-credit">JIO CREATIVITY LABS <span>✳</span> MADE TO FEEL DIFFERENT.</span><span>PRODUCT MARKS BELONG TO THEIR OWNERS.</span></div></footer>
     <AnimatePresence>{storeOpen && <StoreDialog onClose={closeStore} />}</AnimatePresence>

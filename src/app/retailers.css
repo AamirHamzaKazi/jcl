@@ -1,0 +1,29 @@
+.retailer-destinations{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}
+.retailer-option{position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:center;min-height:106px;padding:19px 17px;background:#fffefa;color:#211829;border:1px solid #35223a21;isolation:isolate;transition:border-color .4s var(--motion-ease),background-color .4s var(--motion-ease)}
+.retailer-option:after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--retailer-accent);transform:scaleX(0);transform-origin:left;transition:transform .5s var(--motion-ease)}
+.retailer-option:hover:after,.retailer-option:focus-visible:after{transform:scaleX(1)}
+.retailer-option:hover{background:#fff;border-color:var(--retailer-accent)}
+.retailer-option-top{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.retailer-option-top>svg{color:var(--retailer-accent);transition:transform .5s var(--motion-ease);flex-shrink:0}
+.retailer-option:hover .retailer-option-top>svg{transform:translate3d(2px,-2px,0)}
+.retailer-name{color:var(--retailer-accent);font-size:23px;font-weight:800;letter-spacing:-1px;line-height:1.2}
+.retailer-option-blinkit .retailer-name{background:#f8dd65;color:#294729;padding:2px 5px;margin-left:-5px;border-radius:3px}
+.retailer-description{font-size:10px;line-height:1.6;color:#786d7b;margin-top:9px}
+.store-dialog .retailer-destinations{margin-top:28px}
+.retailer-availability{display:block;font-size:10px;line-height:1.8;margin-top:19px;color:#776b7b}
+.nearby-store-link{display:flex;justify-content:space-between;align-items:center;gap:20px;font-size:11px;line-height:1.6;border-top:1px solid #34223925;padding-top:17px;margin-top:20px;min-height:44px}
+.find-section{flex-wrap:wrap}
+.retail-shopping{flex-basis:100%;width:100%;border-top:1px solid #1210142b;margin-top:5px;padding-top:27px}
+.retail-shopping-intro{display:flex;justify-content:space-between;align-items:flex-start;gap:25px;margin-bottom:18px}
+.retail-shopping-intro .micro{margin:0;font-size:8px;letter-spacing:1px;max-width:none;line-height:1.8}
+.retail-shopping-intro p{font-size:10px;line-height:1.7;max-width:300px;color:#55523a}
+.retailer-destinations-inline{grid-template-columns:repeat(4,minmax(0,1fr));gap:13px}
+.retailer-destinations-inline .retailer-option{background:#f8fae9;border-color:#12101424;padding:22px 20px;min-height:110px}
+.retailer-destinations-inline .retailer-option:hover{background:#fffefa}
+.find-section .retailer-description{display:block;font-size:10px;margin:10px 0 0;letter-spacing:0;color:#786d7b}
+.find-section .retailer-option:focus-visible{outline-color:#311d40}
+.store-dialog{max-width:520px}
+.full-range-link{font-size:9px;margin-top:18px}
+@media(max-width:900px){.retailer-destinations-inline{grid-template-columns:repeat(2,minmax(0,1fr))}.retail-shopping-intro .micro{font-size:8px}.retailer-option{min-height:105px}}
+@media(max-width:560px){.store-dialog .retailer-destinations{gap:9px;margin-top:23px}.store-dialog .retailer-option{padding:17px 12px;min-height:102px}.retailer-name{font-size:21px}.retailer-description{font-size:9px}.retailer-option-top>svg{width:16px}.retailer-availability{font-size:10px}.retail-shopping{margin-top:0;padding-top:24px}.retail-shopping-intro{flex-direction:column;gap:10px}.retail-shopping-intro .micro{font-size:7px}.retail-shopping-intro p{font-size:10px;max-width:310px}.retailer-destinations-inline{gap:10px}.retailer-destinations-inline .retailer-option{padding:19px 14px;min-height:108px}.find-section .retailer-description{font-size:9px}.full-range-link{font-size:9px;margin-top:0}}
+@media(prefers-reduced-motion:reduce){.retailer-option,.retailer-option:after,.retailer-option-top>svg{transition:none}}

@@ -1,13 +1,10 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { motion, useReducedMotion } from "motion/react";
-import { ArrowRight, ArrowUpRight, X, MapPin, ExternalLink } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { ArrowUpRight, X, ShoppingBag } from "lucide-react";
+import RetailerLinks from "@/components/retailer-links";
 export default function StoreDialog({ onClose }: { onClose: () => void }) {
   const reducedMotion = useReducedMotion();
-  const [pin, setPin] = useState("");
-  const [error, setError] = useState("");
-  const [searched, setSearched] = useState(false);
   const dialogRef = useRef<HTMLDivElement>(null);
   const onCloseRef = useRef(onClose);
   useEffect(() => { onCloseRef.current = onClose; }, [onClose]);
@@ -47,17 +44,12 @@ export default function StoreDialog({ onClose }: { onClose: () => void }) {
   return <motion.div className="modal-backdrop" data-native-scroll initial={reducedMotion ? false : { opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={transition} onClick={onClose}>
     <motion.div className="store-dialog" data-native-scroll role="dialog" aria-modal="true" aria-labelledby="store-title" ref={dialogRef} initial={reducedMotion ? false : { y: 16, opacity: 0 }} animate={{ y: 0, opacity: 1 }} exit={{ y: reducedMotion ? 0 : 16, opacity: 0 }} transition={transition} onClick={event => event.stopPropagation()}>
       <button className="dialog-close" aria-label="Close store finder" onClick={onClose}><X size={22} /></button>
-      <span className="eyebrow"><MapPin size={15} /> GOOD TIMES, CLOSE BY</span>
-      <h2 id="store-title">YOUR NEXT<br /><em>CAMPA MOMENT.</em></h2>
-      <p>Find a nearby shop or look for your favourite flavour online.</p>
-      <form onSubmit={event => { event.preventDefault(); if (!/^[1-9][0-9]{5}$/.test(pin)) { setError("Enter a valid 6-digit Indian PIN code."); setSearched(false); } else { setError(""); setSearched(true); } }}>
-        <label htmlFor="pincode">YOUR PIN CODE</label>
-        <div className="pin-row"><input id="pincode" placeholder="e.g. 400001" inputMode="numeric" autoComplete="postal-code" value={pin} maxLength={6} aria-invalid={!!error} aria-describedby={error ? "pin-error" : undefined} onChange={event => { setPin(event.target.value.replace(/\D/g, "")); setSearched(false); setError(""); }} /><Button type="submit" aria-label="Search this PIN code"><ArrowRight size={21} /></Button></div>
-        {error && <p className="form-error" id="pin-error" role="alert">{error}</p>}
-      </form>
-      {searched && <div className="store-results" role="status"><p>Explore stores around <strong>{pin}</strong>.</p><a href={`https://www.google.com/maps/search/Campa+Cola+near+${pin}+India`} target="_blank" rel="noopener noreferrer">Find nearby shops <ArrowUpRight size={17} /></a><small>Store stock and opening hours may vary.</small></div>}
-      <a className="retailer-link" href="https://www.jiomart.com/search/campa" target="_blank" rel="noopener noreferrer">Explore Campa on JioMart <ExternalLink size={16} /></a>
-      <span className="dialog-note">Availability and delivery are confirmed by the retailer.</span>
+      <span className="eyebrow"><ShoppingBag size={15} /> YOUR GOOD TIMES, YOUR WAY.</span>
+      <h2 id="store-title">GOOD TIMES.<br /><em>DELIVERED.</em></h2>
+      <p>Pick your platform. Find your Campa.<br />Set your delivery location with the retailer.</p>
+      <RetailerLinks />
+      <span className="retailer-availability">Product selection, stock and delivery depend on your location and are confirmed by each retailer.</span>
+      <a className="nearby-store-link" href="https://www.google.com/maps/search/Campa+Cola+near+me" target="_blank" rel="noopener noreferrer">Or find a neighbourhood shop <ArrowUpRight size={16} /></a>
     </motion.div>
   </motion.div>;
 }

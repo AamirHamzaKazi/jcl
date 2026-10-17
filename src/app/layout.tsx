@@ -5,6 +5,7 @@ import "./campaign.css";
 import "@/components/brand-journey.css";
 import "./product-duos.css";
 import "./motion-polish.css";
+import "./retailers.css";
 
 export const metadata: Metadata = {
   title: "Campa — Born Original. | Jio Creativity Labs",
