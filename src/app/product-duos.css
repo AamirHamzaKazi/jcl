@@ -1,0 +1,16 @@
+.hero-photograph picture{display:block;width:100%;height:100%}
+.journey-a11y-title{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.flavour-world.is-active{flex:1.1}
+.flavour-world .world-image img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 46%}
+.flavour-world.is-active .world-image{transform:scale(1.015)}
+.world-formats{display:block;font-size:7px;line-height:1.6;letter-spacing:.8px;color:#ffffffa6;margin-top:3px;white-space:nowrap}
+.world-caption{transform:translateY(57px)}
+.flavour-worlds{height:730px}
+.flavour-world .world-image{bottom:150px;isolation:isolate}
+.flavour-world .world-image:before{content:'';position:absolute;inset:-25px;z-index:-1;background-image:var(--duo-image);background-size:cover;background-position:center;filter:blur(24px);opacity:.6}
+.flavour-world .world-image img{object-fit:contain;object-position:center}
+.flavour-world .world-shade{background:linear-gradient(0deg,#0b050df7 0%,#0b050dca 19%,transparent 43%)}
+.cola-world{background:#24051a}.orange-world{background:#a9440a}.lemon-world{background:#30441e}
+@media(max-width:1100px){.flavour-worlds{height:620px}.world-formats{font-size:6px;letter-spacing:.5px}.world-caption h3{font-size:5.7vw}}
+@media(max-width:800px){.flavour-worlds{height:550px}.world-caption h3{font-size:6vw}.world-caption{left:15px;right:12px}.world-formats{font-size:5px;letter-spacing:.1px}}
+@media(max-width:560px){.campaign-hero{background:#1b0717}.hero-photograph{inset:36% -5% 4% -5%;transform-origin:70% center}.hero-photograph img{object-position:center center}.hero-orb-wrap{bottom:11%;right:7%}.hero-orb{height:82px;width:82px}.hero-shade{background:linear-gradient(0deg,#110410b3 0%,transparent 20%,transparent 55%,#17051055 68%,#17051026 100%)}.flavour-worlds{height:auto}.flavour-world,.flavour-world.is-active{height:650px;flex:none}.world-caption h3{font-size:69px}.world-formats{font-size:7px;letter-spacing:.7px}.world-caption{left:6%;right:6%}.flavour-world .world-image{bottom:185px}.flavour-world .world-image img{object-position:center}}
